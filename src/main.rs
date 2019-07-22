@@ -1,33 +1,36 @@
 use std::io::stdin;
 
 fn main() {
-    struct Tc_Var {
-        name: String,
-        example: String,
-    }
+    let wp_array = ["Story", "Defect"];
+    let wp_array_examples = ["S", "D"];
 
-    let story = Tc_Var {
-        name: String::from("Story"),
-        example: String::from("S12345"),
-    };
+    let type_array = [
+        "Acceptance",
+        "Regression",
+        "Manual",
+        "User Interface",
+        "Usability",
+    ];
+    let type_array_examples = ["A", "R", "M", "UI", "U"];
 
-    let defect = Tc_Var {
-        name: String::from("Defect"),
-        example: String::from("DE12345"),
-    };
+    let mut work_product;
 
-    let mut work_product = String::new();
     println!(
-        "What is the work product? ({},{}) Examples:({},{})",
-        story.name, defect.name, story.example, defect.example
+        "What is the work product? {:?} Examples:{:?}",
+        wp_array, wp_array_examples
     );
 
     stdin()
         .read_line(&mut work_product)
         .expect("Failed to read work product");
 
-    let manual = String::from("Manual");
-    let regression = String::from("Regression");
+    let work_product = work_product.trim().to_uppercase();
 
-    println!("What is the type of test that you are writing? ({},{}) Examples:({},{})", );
+    // if wp_array_examples.contains(& work_product) {}
+
+    // println!("What is the type of test that you are writing? ({},{}) Examples:({},{})",);
 }
+//testfolder
+//Type Acceptance Regression Manual UserInterface Usability
+//Method Manual Automated
+//Project Elements
