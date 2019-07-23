@@ -1,23 +1,35 @@
 use std::io::stdin;
 
-fn main() {
-    let wp_array = ["Story", "Defect"];
-    let wp_array_examples = ["S", "D"];
+fn check_in_string(array_example: &[String], string: &String) -> bool {
+    let mut check = false;
+    for item in array_example.iter() {
+        if item == string {
+            check = true;
+        }
+    }
+    check
+}
 
-    let type_array = [
+fn main() {
+    let mut last: [&str] = [];
+
+    let wp_array: [&'static str; 2] = ["Story", "Defect"];
+    let wp_array_examples: [&'static str; 2] = ["S", "D"];
+
+    let type_array: [&'static str; 5] = [
         "Acceptance",
         "Regression",
         "Manual",
         "User Interface",
         "Usability",
     ];
-    let type_array_examples = ["A", "R", "M", "UI", "U"];
+    let type_array_examples: [&'static str; 5] = ["A", "R", "M", "UI", "U"];
 
-    let mut work_product = String::new();
+    let mut work_product = &'static str;
 
     println!(
-        "What is the work product? {:?} Examples:{:?}",
-        wp_array, wp_array_examples
+        "What is the work product? {} Examples:{}",
+        &wp_array, wp_array_examples
     );
 
     stdin()
@@ -26,15 +38,13 @@ fn main() {
 
     let mut work_product = work_product.trim().to_uppercase();
 
-    let mut x = false;
-    for item in wp_array_examples.iter() {
-        if item == &work_product {
-            x = true;
-        }
-    }
+    let check = check_in_string(&wp_array_examples[0..1], &work_product);
 
-    if !x {
-        println("Wrong work product");
+    if !check {
+        println!("Wrong work product");
+    }
+    else {
+        last.push(&work_product);
     }
 
     println!(
@@ -45,8 +55,6 @@ fn main() {
     stdin()
         .read_line(&mut work_product)
         .expect("Failed to read test type");
-    
-    
 
     // if wp_array_examples.contains(& work_product) {}
 
